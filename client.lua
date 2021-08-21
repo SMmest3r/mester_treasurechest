@@ -43,14 +43,9 @@ end
 end)
 
 Citizen.CreateThread(function()
-local nbObjetsCrees = 0
-while nbObjetsCrees < 1 do
  for _, locations in pairs(Config.kincs) do
 local kincs = CreateObject(Config.object, locations.x, locations.y, locations.z, false, false, false)
      PlaceObjectOnGroundProperly(kincs)
- nbObjetsCrees = nbObjetsCrees + 1
- 
-end
 end
 end)
 
