@@ -69,8 +69,6 @@ Config.keszpenz = true
 Config.nyeremenynagy = math.random(8000, 10000)
 -- How much the player got if they got less money from the chest
 Config.nyeremeny = math.random(5000, 8000)
---Discord webhook for log
-Config.discord = "WEBHOOK_URL"
 --Discord messages
 Config.dcuzenetpenz = " Kinyitott egy kincsesládát és pénz volt benne!"
 Config.dcuzenetpenzkeves = " Kinyitott egy kincsesládát és kicsit kevesebb pénz volt benne!"
