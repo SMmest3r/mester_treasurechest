@@ -82,6 +82,6 @@ Config.penz = "congratulations! You found a treasure chest and there was money i
 Config.gyemant = "congratulations! You found a treasure chest and had 20 cut diamonds in it!"
 Config.dcuzenetpenz = " Opened an chest and they found money in it!"
 Config.dcuzenetdia = " Opened an chest and they found diamonds!"
-Config.dcuzenetpenz = " Opened an chest and they found less money in it!"]]
+Config.dcuzenetpenzkeves = " Opened an chest and they found less money in it!"]]
 
 
