@@ -13,14 +13,14 @@ Citizen.CreateThread(function()
     DrawText3Ds(locations.x, locations.y, locations.z, Config.szoveg) 
     if IsControlJustReleased(0,38) then
      local gyemantvagypenz = math.random(1, Config.nyeremenyesely)
-     if gyemantvagypenz == 6 then
+     if gyemantvagypenz == 1 then
        TriggerEvent('anim')
        Citizen.Wait(5000)
      TriggerServerEvent('mesterkincstargy')
      Citizen.Wait(50)
      ESX.ShowNotification(Config.gyemant, true, true, false)
      Citizen.Wait(Config.varakozas)
-     elseif gyemantvagypenz == 8 then
+     elseif gyemantvagypenz == 2 then
        TriggerEvent('anim')
        Citizen.Wait(5000)
        TriggerServerEvent('mesterkincspenzsok')
