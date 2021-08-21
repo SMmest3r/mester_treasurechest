@@ -54,7 +54,7 @@ Config.nyeremenytargy = "diamond_ore"
 --The number of item when player got item from the chest
 Config.nyeremenytargyszam = 25
 --Win chance for item. Now it's 1 to 15
-Config.nyeremenyesely = 15
+Config.nyeremenyesely = 15 --Minimum 3
 --How much time player need to wait to open a chest again (in ms)
 Config.varakozas = 100000
 --How far would player see the text of the treasure chest (in coords)
@@ -79,7 +79,7 @@ Config.dcuzenetdia = " Kinyitott egy kincsesládát és gyémánt volt benne!"
 --[[--In english:--
 Config.szoveg = "treasure chest [E]"
 Config.penz = "congratulations! You found a treasure chest and there was money in it!"
-Config.gyemant = "congratulations! You found a treasure chest and had 20 cut diamonds in it!"
+Config.gyemant = "congratulations! You found a treasure chest and had 25 cut diamonds in it!"
 Config.dcuzenetpenz = " Opened an chest and they found money in it!"
 Config.dcuzenetdia = " Opened an chest and they found diamonds!"
 Config.dcuzenetpenzkeves = " Opened an chest and they found less money in it!"]]
