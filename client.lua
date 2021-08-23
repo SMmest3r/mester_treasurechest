@@ -6,12 +6,17 @@ local havekey = false
 RegisterNetEvent('mesterkeytrue')
 AddEventHandler('mesterkeytrue', function()
 	havekey = true
+  TriggerServerEvent('mesterkeyremove')
 end)
 
 RegisterNetEvent('mesterkeyfalse')
 AddEventHandler('mesterkeyfalse', function()
-	havekey = false
-end)
+  if Config.needkey == false then
+    havekey = true
+    elseif Config.needkey == true then
+      local havekey = false
+    end
+  end)
 
 Citizen.CreateThread(function()
 
