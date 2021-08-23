@@ -5,17 +5,13 @@ local havekey = false
 
 RegisterNetEvent('mesterkeytrue')
 AddEventHandler('mesterkeytrue', function()
-	havekey = true
+	 havekey = true
   TriggerServerEvent('mesterkeyremove')
 end)
 
 RegisterNetEvent('mesterkeyfalse')
 AddEventHandler('mesterkeyfalse', function()
-  if Config.needkey == false then
-    havekey = true
-    elseif Config.needkey == true then
-      local havekey = false
-    end
+      havekey = false
   end)
 
 Citizen.CreateThread(function()
@@ -32,6 +28,7 @@ Citizen.CreateThread(function()
     TriggerServerEvent('mesterkeycheck')
     Citizen.Wait(100)
     if havekey == false then
+      if Config.needkey == true then
       ESX.ShowNotification(Config.nokeytext, true, true, false)
     else
      local itemormoney = math.random(1, Config.winchance)
@@ -56,6 +53,7 @@ Citizen.CreateThread(function()
    Citizen.Wait(50)
    ESX.ShowNotification(Config.money, true, true, false)
 Citizen.Wait(Config.wait)
+end
 end
 end   
 end
