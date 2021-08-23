@@ -47,8 +47,16 @@ AddEventHandler('mesterkeycheck', function()
 	
 	if oneQuantity > 0 then
 		TriggerClientEvent('mesterkeytrue', source) -- true
-        xPlayer.removeInventoryItem(Config.keyitem, 1)
 	else
 		TriggerClientEvent('mesterkeyfalse', source) -- false
 	end
+end)
+
+RegisterServerEvent('mesterkeyremove')
+AddEventHandler('mesterkeyremove', function()
+	local _source = source
+	local xPlayer = ESX.GetPlayerFromId(_source)
+    if Config.needkey == true then
+    xPlayer.removeInventoryItem(Config.keyitem, 1)
+    end
 end)
