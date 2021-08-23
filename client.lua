@@ -1,6 +1,18 @@
 ESX = nil
 TriggerEvent('esx:getSharedObject', function(obj) ESX = obj end)
 
+local havekey = false
+
+RegisterNetEvent('mesterkeytrue')
+AddEventHandler('mesterkeytrue', function()
+	havekey = true
+end)
+
+RegisterNetEvent('mesterkeyfalse')
+AddEventHandler('mesterkeyfalse', function()
+	havekey = false
+end)
+
 Citizen.CreateThread(function()
 
   while true do
@@ -8,33 +20,38 @@ Citizen.CreateThread(function()
   Citizen.Wait(1)
     local ped = PlayerPedId()
     local mycords = GetEntityCoords(ped)
-   for _, locations in pairs(Config.kincs) do
-   if GetDistanceBetweenCoords(mycords, locations, true) < Config.tavolsag then
-    DrawText3Ds(locations.x, locations.y, locations.z, Config.szoveg) 
+   for _, locations in pairs(Config.treasure) do
+   if GetDistanceBetweenCoords(mycords, locations, true) < Config.distance then
+    DrawText3Ds(locations.x, locations.y, locations.z, Config.text) 
     if IsControlJustReleased(0,38) then
-     local gyemantvagypenz = math.random(1, Config.nyeremenyesely)
-     if gyemantvagypenz == 1 then
+    TriggerServerEvent('mesterkeycheck')
+    Citizen.Wait(100)
+    if havekey == false then
+      ESX.ShowNotification(Config.nokeytext, true, true, false)
+    else
+     local itemormoney = math.random(1, Config.winchance)
+     if itemormoney == 1 then
        TriggerEvent('anim')
        Citizen.Wait(5000)
-     TriggerServerEvent('mesterkincstargy')
+     TriggerServerEvent('mestertreasureitem')
      Citizen.Wait(50)
-     ESX.ShowNotification(Config.gyemant, true, true, false)
-     Citizen.Wait(Config.varakozas)
-     elseif gyemantvagypenz == 2 then
+     ESX.ShowNotification(Config.item, true, true, false)
+     Citizen.Wait(Config.wait)
+     elseif itemormoney == 2 then
        TriggerEvent('anim')
        Citizen.Wait(5000)
-       TriggerServerEvent('mesterkincspenzsok')
+       TriggerServerEvent('mestertreasuremoneymore')
        Citizen.Wait(50)
-       ESX.ShowNotification(Config.penz, true, true, false)
-   Citizen.Wait(Config.varakozas)
+       ESX.ShowNotification(Config.money, true, true, false)
+   Citizen.Wait(Config.wait)
      else
    TriggerEvent('anim')
    Citizen.Wait(5000)
-   TriggerServerEvent('mesterkincspenz')
+   TriggerServerEvent('mestertreasuremoney')
    Citizen.Wait(50)
-   ESX.ShowNotification(Config.penz, true, true, false)
-Citizen.Wait(Config.varakozas)
-
+   ESX.ShowNotification(Config.money, true, true, false)
+Citizen.Wait(Config.wait)
+end
 end   
 end
 end
@@ -43,9 +60,9 @@ end
 end)
 
 Citizen.CreateThread(function()
- for _, locations in pairs(Config.kincs) do
-local kincs = CreateObject(Config.object, locations.x, locations.y, locations.z, false, false, false)
-     PlaceObjectOnGroundProperly(kincs)
+ for _, locations in pairs(Config.treasure) do
+local treasure = CreateObject(Config.object, locations.x, locations.y, locations.z, false, false, false)
+     PlaceObjectOnGroundProperly(treasure)
 end
 end)
 
@@ -62,17 +79,16 @@ end)
 
 
 function DrawText3Ds(x,y,z, text)
- local onScreen,_x,_y=World3dToScreen2d(x,y,z)
- local px,py,pz=table.unpack(GetGameplayCamCoords())
- SetTextScale(0.35, 0.35)
- SetTextFont(4)
- SetTextProportional(1)
- SetTextColour(255, 255, 255, 215)
- SetTextEntry("STRING")
- SetTextCentre(1)
- AddTextComponentString(text)
- DrawText(_x,_y)
- local factor = (string.len(text)) / 370
- DrawRect(_x,_y+0.0125, 0.015+ factor, 0.03, 41, 11, 41, 68)
-
-end
+  local onScreen,_x,_y=World3dToScreen2d(x,y,z)
+  local px,py,pz=table.unpack(GetGameplayCamCoords())
+  SetTextScale(0.35, 0.35)
+  SetTextFont(4)
+  SetTextProportional(1)
+  SetTextColour(255, 255, 255, 215)
+  SetTextEntry("STRING")
+  SetTextCentre(1)
+  AddTextComponentString(text)
+  DrawText(_x,_y)
+  local factor = (string.len(text)) / 370
+  DrawRect(_x,_y+0.0125, 0.015+ factor, 0.03, 41, 11, 41, 68)
+ end
