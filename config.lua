@@ -57,6 +57,8 @@ Config.winitemamount = 25
 Config.winchance = 15 --Minimum 3
 --The item name what the player needs to have to open a chest
 Config.keyitem = "treasurekey"
+--If false then players can open the treasure chests without key item
+Config.needkey = true
 --How much time player need to wait to open a chest again (in ms)
 Config.wait = 100000
 --How far would player see the text of the treasure chest (in coords)
