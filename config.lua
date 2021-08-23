@@ -1,7 +1,7 @@
 Config = {}
 
 --Coordinates
-Config.kincs = {
+Config.treasure = {
 	vector3(499.63, 5607.63, 795.67), --1
 	vector3(455.46, -839.52, 26.65), --2
 	vector3(-336.02, -958.33, 30.61), --3
@@ -50,38 +50,31 @@ Config.kincs = {
 --The object name
 Config.object = "xm_prop_x17_chest_closed"
 --The item what player got if they got item from the treasure chest
-Config.nyeremenytargy = "diamond_ore"
+Config.winitem = "diamond_ore"
 --The number of item when player got item from the chest
-Config.nyeremenytargyszam = 25
+Config.winitemamount = 25
 --Win chance for item. Now it's 1 to 15
-Config.nyeremenyesely = 15 --Minimum 3
+Config.winchance = 1 --Minimum 3
+--The item name what the player needs to have to open a chest
+Config.keyitem = "treasurekey"
 --How much time player need to wait to open a chest again (in ms)
-Config.varakozas = 100000
+Config.wait = 100000
 --How far would player see the text of the treasure chest (in coords)
-Config.tavolsag = 2
+Config.distance = 2
 --Messages and text
-Config.szoveg = "Kincsesláda [E]"
-Config.penz = "Gratulálunk! Találtál egy kincsesládát és pénz volt benne!"
-Config.gyemant = "Gratulálunk! Találtál egy kincsesládát és 25 csiszolt gyémánt volt benne!"
+Config.text = "treasure chest [E]"
+Config.money = "congratulations! You found a treasure chest and there was money in it!"
+Config.item = "congratulations! You found a treasure chest and had 20 cut diamonds in it!"
+Config.nokeytext = "You need a key to open the treausre chest!"
 --How player got the money. True = cash; false = bank
-Config.keszpenz = true
+Config.cash = true
 --How much the player got from the treasure chest if they got more money.
-Config.nyeremenynagy = math.random(8000, 10000)
+Config.winbig = math.random(8000, 10000)
 -- How much the player got if they got less money from the chest
-Config.nyeremeny = math.random(5000, 8000)
+Config.win = math.random(5000, 8000)
 --Discord webhook for log
 Config.discord = "WEBHOOK_URL"
 --Discord messages
-Config.dcuzenetpenz = " Kinyitott egy kincsesládát és pénz volt benne!"
-Config.dcuzenetpenzkeves = " Kinyitott egy kincsesládát és kicsit kevesebb pénz volt benne!"
-Config.dcuzenetdia = " Kinyitott egy kincsesládát és gyémánt volt benne!"
-
---[[--In english:--
-Config.szoveg = "treasure chest [E]"
-Config.penz = "congratulations! You found a treasure chest and there was money in it!"
-Config.gyemant = "congratulations! You found a treasure chest and had 25 cut diamonds in it!"
-Config.dcuzenetpenz = " Opened an chest and they found money in it!"
-Config.dcuzenetdia = " Opened an chest and they found diamonds!"
-Config.dcuzenetpenzkeves = " Opened an chest and they found less money in it!"]]
-
-
+Config.dcmessagemoney = " Opened an chest and they found money in it!"
+Config.dcmessageitem = " Opened an chest and they found diamonds!"
+Config.dcmessagelessmoney = " Opened an chest and they found less money in it!"
