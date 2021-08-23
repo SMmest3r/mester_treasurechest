@@ -7,34 +7,48 @@ function sendToDiscord(name, message)
 	PerformHttpRequest(Config.discord, function(err, text, headers) end, 'POST', json.encode({content = message}), { ['Content-Type'] = 'application/json' })
   end
 
-RegisterServerEvent('mesterkincspenzsok')
-AddEventHandler('mesterkincspenzsok', function()
+RegisterServerEvent('mestertreasuremoneymore')
+AddEventHandler('mestertreasuremoneymore', function()
     local src = source
     local xPlayer = ESX.GetPlayerFromId(source)
-    sendToDiscord('Mester kincsesláda system', GetPlayerName(source) .. Config.dcuzenetpenz)
-    if Config.keszpenz == true then
-        xPlayer.addMoney(Config.nyeremenynagy)
+    sendToDiscord('Mester treasure chest system', GetPlayerName(source) .. Config.dcmessagemoney)
+    if Config.cash == true then
+        xPlayer.addMoney(Config.winbig)
     else
-        xPlayer.addAccountMoney('bank', Config.nyeremenynagy)
+        xPlayer.addAccountMoney('bank', Config.winbig)
     end
     end)
 
-    RegisterServerEvent('mesterkincspenz')
-AddEventHandler('mesterkincspenz', function()
+    RegisterServerEvent('mestertreasuremoney')
+AddEventHandler('mestertreasuremoney', function()
     local src = source
     local xPlayer = ESX.GetPlayerFromId(source)
-    sendToDiscord('Mester kincsesláda system', GetPlayerName(source) .. Config.dcuzenetpenzkeves)
-    if Config.keszpenz == true then
-        xPlayer.addMoney(Config.nyeremeny)
+    sendToDiscord('Mester treasure chest system', GetPlayerName(source) .. Config.dcmessagelessitem)
+    if Config.cash == true then
+        xPlayer.addMoney(Config.win)
     else
-        xPlayer.addAccountMoney('bank', Config.nyeremeny)
+        xPlayer.addAccountMoney('bank', Config.win)
     end
     end)
 
-RegisterServerEvent('mesterkincstargy')
-AddEventHandler('mesterkincstargy', function()
+RegisterServerEvent('mestertreasureitem')
+AddEventHandler('mestertreasureitem', function()
     local _source = source
     local xPlayer = ESX.GetPlayerFromId(_source)
-    sendToDiscord('Mester kincsesláda system', GetPlayerName(source) .. Config.dcuzenetdia)
-    xPlayer.addInventoryItem(Config.nyeremenytargy, Config.nyeremenytargyszam)
+    sendToDiscord('Mester treasure chest system', GetPlayerName(source) .. Config.dcmessageitem)
+    xPlayer.addInventoryItem(Config.winitem, Config.winitemamount)
     end)
+
+RegisterServerEvent('mesterkeycheck')
+AddEventHandler('mesterkeycheck', function()
+	local _source = source
+	local xPlayer = ESX.GetPlayerFromId(_source)
+	local oneQuantity = xPlayer.getInventoryItem(Config.keyitem).count
+	
+	if oneQuantity > 0 then
+		TriggerClientEvent('mesterkeytrue', source) -- true
+        xPlayer.removeInventoryItem(Config.keyitem, 1)
+	else
+		TriggerClientEvent('mesterkeyfalse', source) -- false
+	end
+end)
