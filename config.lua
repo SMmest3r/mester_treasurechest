@@ -54,7 +54,7 @@ Config.winitem = "diamond_ore"
 --The number of item when player got item from the chest
 Config.winitemamount = 25
 --Win chance for item. Now it's 1 to 15
-Config.winchance = 1 --Minimum 3
+Config.winchance = 15 --Minimum 3
 --The item name what the player needs to have to open a chest
 Config.keyitem = "treasurekey"
 --How much time player need to wait to open a chest again (in ms)
