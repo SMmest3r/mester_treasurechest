@@ -23,7 +23,7 @@ AddEventHandler('mestertreasuremoneymore', function()
 AddEventHandler('mestertreasuremoney', function()
     local src = source
     local xPlayer = ESX.GetPlayerFromId(source)
-    sendToDiscord('Mester treasure chest system', GetPlayerName(source) .. Config.dcmessagelessitem)
+    sendToDiscord('Mester treasure chest system', GetPlayerName(source) .. Config.dcmessagelessmoney)
     if Config.cash == true then
         xPlayer.addMoney(Config.win)
     else
