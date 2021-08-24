@@ -26,7 +26,7 @@ Citizen.CreateThread(function()
     DrawText3Ds(locations.x, locations.y, locations.z, Config.text) 
     if IsControlJustReleased(0,38) then
     TriggerServerEvent('mesterkeycheck')
-    Citizen.Wait(100)
+    Citizen.Wait(500)
     if havekey == false then
       ESX.ShowNotification(Config.nokeytext, true, true, false)
     else
