@@ -43,9 +43,9 @@ RegisterServerEvent('mesterkeycheck')
 AddEventHandler('mesterkeycheck', function()
 	local _source = source
 	local xPlayer = ESX.GetPlayerFromId(_source)
-    if Config.kellkulcs == false then
+    if Config.needkey == false then
     TriggerClientEvent('mesterkeytrue', source)
-	elseif Config.kellkulcs == true then
+	elseif Config.needkey == true then
     TriggerClientEvent('mesterkeycheck3', source)
 end
 end)
