@@ -43,13 +43,11 @@ RegisterServerEvent('mesterkeycheck')
 AddEventHandler('mesterkeycheck', function()
 	local _source = source
 	local xPlayer = ESX.GetPlayerFromId(_source)
-	local oneQuantity = xPlayer.getInventoryItem(Config.keyitem).count
-	
-	if oneQuantity > 0 then
-		TriggerClientEvent('mesterkeytrue', source) -- true
-	else
-		TriggerClientEvent('mesterkeyfalse', source) -- false
-	end
+    if Config.kellkulcs == false then
+    TriggerClientEvent('mesterkeytrue', source)
+	elseif Config.kellkulcs == true then
+    TriggerClientEvent('mesterkeycheck3', source)
+end
 end)
 
 RegisterServerEvent('mesterkeyremove')
@@ -59,4 +57,16 @@ AddEventHandler('mesterkeyremove', function()
     if Config.needkey == true then
     xPlayer.removeInventoryItem(Config.keyitem, 1)
     end
+end)
+
+RegisterServerEvent('mesterkeycheck2')
+AddEventHandler('mesterkeycheck2', function()
+	local _source = source
+	local xPlayer = ESX.GetPlayerFromId(_source)
+	local oneQuantity = xPlayer.getInventoryItem(Config.kulcsitem).count
+	if oneQuantity > 0 then
+		TriggerClientEvent('mesterkeytrue', source) -- true
+	else
+		TriggerClientEvent('mesterkeyfalse', source) -- false
+	end
 end)
