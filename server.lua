@@ -63,7 +63,7 @@ RegisterServerEvent('mesterkeycheck2')
 AddEventHandler('mesterkeycheck2', function()
 	local _source = source
 	local xPlayer = ESX.GetPlayerFromId(_source)
-	local oneQuantity = xPlayer.getInventoryItem(Config.kulcsitem).count
+	local oneQuantity = xPlayer.getInventoryItem(Config.keyitem).count
 	if oneQuantity > 0 then
 		TriggerClientEvent('mesterkeytrue', source) -- true
 	else
