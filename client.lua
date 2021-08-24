@@ -28,7 +28,6 @@ Citizen.CreateThread(function()
     TriggerServerEvent('mesterkeycheck')
     Citizen.Wait(100)
     if havekey == false then
-      if Config.needkey == false then
       ESX.ShowNotification(Config.nokeytext, true, true, false)
     else
      local itemormoney = math.random(1, Config.winchance)
@@ -53,7 +52,6 @@ Citizen.CreateThread(function()
    Citizen.Wait(50)
    ESX.ShowNotification(Config.money, true, true, false)
 Citizen.Wait(Config.wait)
-end
 end
 end   
 end
@@ -80,6 +78,10 @@ local playerPed = GetPlayerPed(-1)
  ClearPedTasks(playerPed)
 end)
 
+RegisterNetEvent('mesterkeycheck3')
+AddEventHandler('mesterkeycheck3', function()
+  TriggerServerEvent('mesterkeycheck2', source)
+end)
 
 function DrawText3Ds(x,y,z, text)
   local onScreen,_x,_y=World3dToScreen2d(x,y,z)
