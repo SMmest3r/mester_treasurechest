@@ -28,7 +28,7 @@ Citizen.CreateThread(function()
     TriggerServerEvent('mesterkeycheck')
     Citizen.Wait(100)
     if havekey == false then
-      if Config.needkey == true then
+      if Config.needkey == false then
       ESX.ShowNotification(Config.nokeytext, true, true, false)
     else
      local itemormoney = math.random(1, Config.winchance)
